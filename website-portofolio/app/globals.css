@@ -1,0 +1,170 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-p3r: var(--font-p3r);
+  --color-p3r-blue: #00e5ff;
+  --color-p3r-deep: #060f24;
+  --color-p3r-abyss: #030816;
+  --color-p3r-yellow: #facc15;
+  --color-p3r-teal: #00ffc2;
+  --color-p3r-red: #ef4444;
+
+  --color-accent-warm: #00e5ff;
+  --color-ring: #00e5ff;
+  --color-input: rgba(0, 229, 255, 0.2);
+  --color-border: rgba(0, 229, 255, 0.15);
+  --color-destructive: #ef4444;
+  --color-accent-foreground: #030816;
+  --color-accent: rgba(0, 229, 255, 0.15);
+  --color-muted-foreground: #94a3b8;
+  --color-muted: rgba(15, 39, 87, 0.6);
+  --color-secondary-foreground: #00e5ff;
+  --color-secondary: rgba(6, 21, 56, 0.8);
+  --color-primary-foreground: #030816;
+  --color-primary: #00e5ff;
+  --color-popover-foreground: #e0f2fe;
+  --color-popover: #060f24;
+  --color-card-foreground: #e0f2fe;
+  --color-card: #081432;
+  --color-foreground: #e0f2fe;
+  --color-background: #030816;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+}
+
+:root {
+  color-scheme: dark;
+  --background: #030816;
+  --foreground: #e0f2fe;
+  --card: #081432;
+  --card-foreground: #e0f2fe;
+  --popover: #060f24;
+  --popover-foreground: #e0f2fe;
+  --primary: #00e5ff;
+  --primary-foreground: #030816;
+  --secondary: #0a1b42;
+  --secondary-foreground: #00e5ff;
+  --muted: #071533;
+  --muted-foreground: #94a3b8;
+  --accent: rgba(0, 229, 255, 0.15);
+  --accent-foreground: #00e5ff;
+  --destructive: #ef4444;
+  --border: rgba(0, 229, 255, 0.18);
+  --input: rgba(0, 229, 255, 0.25);
+  --ring: #00e5ff;
+  --radius: 0.25rem;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #030816;
+  --foreground: #e0f2fe;
+  --card: #081432;
+  --card-foreground: #e0f2fe;
+  --primary: #00e5ff;
+  --primary-foreground: #030816;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    background-color: #030816;
+    color: #e0f2fe;
+    font-family: var(--font-sans), sans-serif;
+  }
+}
+
+/* Persona 3 Reload Custom Styling Utilities */
+.font-p3r {
+  font-family: var(--font-p3r), var(--font-sans), sans-serif;
+}
+
+.p3r-slant {
+  transform: skewX(-10deg);
+}
+
+.p3r-slant-reverse {
+  transform: skewX(10deg);
+}
+
+.p3r-clip-diag {
+  clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+}
+
+.p3r-clip-corner {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.p3r-clip-tag {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+
+.p3r-glow-cyan {
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.35);
+}
+
+.p3r-glow-yellow {
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.4);
+}
+
+.p3r-glow-text {
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.7), 0 0 24px rgba(0, 229, 255, 0.4);
+}
+
+.p3r-glow-yellow-text {
+  text-shadow: 0 0 12px rgba(250, 204, 21, 0.8), 0 0 24px rgba(250, 204, 21, 0.4);
+}
+
+
+
+.p3r-scanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 229, 255, 0.025) 50%,
+    rgba(0, 229, 255, 0.025)
+  );
+  background-size: 100% 4px;
+}
+
+/* Water Ripple / Moon Pulse Animation */
+@keyframes p3r-ripple {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+}
+
+.animate-p3r-ripple {
+  animation: p3r-ripple 6s ease-in-out infinite;
+}
+
+@keyframes p3r-scan-bar {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+.animate-p3r-scan {
+  animation: p3r-scan-bar 8s linear infinite;
+}
